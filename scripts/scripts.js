@@ -6,7 +6,7 @@ function computerPlay(){
 }
 
 function playerPlay() {
-    let playerChoice = prompt('Rock, paper or scissors? ');
+    let playerChoice = prompt('Rock, paper, or scissors? ');
     return playerChoice.toLowerCase();
 }
 
@@ -81,6 +81,7 @@ function game(){
         ++playerScore;
         console.log(`Player score: ${playerScore}\nComputer score: ${computerScore}`);
     }
+    else ++round
 }
 
 if (playerScore > computerScore){
@@ -90,5 +91,4 @@ else if (playerScore < computerScore) {
     console.log(`You lost. Better luck next time!\nFinal score: ${playerScore} - ${computerScore}`);
 }
 }
-
 game();
