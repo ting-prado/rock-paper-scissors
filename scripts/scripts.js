@@ -82,6 +82,13 @@ function game(){
         console.log(`Player score: ${playerScore}\nComputer score: ${computerScore}`);
     }
 }
+
+if (playerScore > computerScore){
+    console.log(`Congratulations! You won!\nFinal score: ${playerScore} - ${computerScore}`);
+}
+else if (playerScore < computerScore) {
+    console.log(`You lost. Better luck next time!\nFinal score: ${playerScore} - ${computerScore}`);
+}
 }
 
 game();
