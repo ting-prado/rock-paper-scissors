@@ -21,6 +21,15 @@ h1 {
     margin-top: 0.5em;
     -webkit-text-stroke: 0.09rem #0a490a;
     }
+
+h2 {
+    font-family: 'monogram', cursive;
+    color: white;
+    font-size: 2em;
+    -webkit-text-stroke: 0.09rem #0a490a;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+}
 }
 
 @supports not (-webkit-text-stroke: 0.09rem #0a490a){
@@ -32,14 +41,39 @@ h1 {
     color: #0c740c;
     margin-top: 20px;
 }
+
+h2 {
+    font-family: 'monogram', cursive;
+    color: rgb(119, 107, 0);
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+}
+}
+
+#titles {
+    display: flex;
+    justify-content: space-around;
+}
+
+#player-title {
+    margin-left: -4.5em;
+}
+
+#comp-title {
+    margin-right: -5.8em;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 8em 10em 1fr 10em 8em; 
+    grid-gap: 2em;
 }
 
 #playerChoicesDiv {
-    border: 1px solid black;
+    border: 1px solid #226b11;
     display: flex;
     flex-direction: column;
-    width: 11.8em;
-    margin-left: 8em;
     width: 8.6em;
     background: rgba(237, 255, 6, 0.36);
 }
@@ -48,11 +82,47 @@ h1 {
     height: 70px;
 }
 
+#playerScissor {
+    transform: scaleX(-1);
+}
+
 .playerChoices {
     margin: 0.5em;
     width: 100px;
     height: 90px;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid #219221;
     background: rgba(35, 84, 24, 0.64);
+}
+
+#resultGif {
+    display: inline;
+    justify-self: center;
+    align-self: center;
+}
+
+#compChoicesDiv {
+    border: 1px solid #226b11;
+    display: flex;
+    flex-direction: column;
+    width: 8.6em;
+    background: rgba(237, 255, 6, 0.36);
+    justify-self: end;
+}
+.compChoices {
+    margin: 0.5em;
+    width: 100px;
+    height: 90px;
+    padding: 10px;
+    border: 1px solid #219221;
+    background: rgba(35, 84, 24, 0.64);
+}
+
+#compRock {
+    height: 70px;
+    transform: scaleX(-1);
+}
+
+#compPaper {
+    transform: scaleX(-1);
 }
