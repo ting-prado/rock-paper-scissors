@@ -1,0 +1,35 @@
+@font-face {
+    font-family: monogram;
+    src: url('/styles/EightBitDragon-anqx.ttf');
+}
+
+html {
+    background: url('/images/green-bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@supports (-webkit-text-stroke: 0.09rem #0a490a) { 
+h1 {
+    display: block;
+    text-align: center;
+    font-family: 'monogram';
+    font-size: 3.5rem;
+    color: rgb(255, 255, 134);
+    margin-top: 0.5em;
+    -webkit-text-stroke: 0.09rem #0a490a;
+    }
+}
+
+@supports not (-webkit-text-stroke: 0.09rem #0a490a){
+h1 {
+    display: block;
+    text-align: center;
+    font-family: 'monogram';
+    font-size: 3.5rem;
+    color: #0c740c;
+    margin-top: 20px;
+}
+}

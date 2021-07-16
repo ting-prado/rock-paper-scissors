@@ -90,4 +90,3 @@ else if (playerScore < computerScore) { //Displays consolatory message if player
     console.log(`You lost. Better luck next time!\nFinal score: ${playerScore} - ${computerScore}`);
 }
 }
-game(); //Runs the game function
