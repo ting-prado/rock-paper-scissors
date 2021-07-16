@@ -9,6 +9,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    min-height: 100vh;
 }
 
 @supports (-webkit-text-stroke: 0.09rem #0a490a) { 
@@ -57,7 +58,7 @@ h2 {
 }
 
 #player-title {
-    margin-left: -4.5em;
+    margin-left: -4.8em;
 }
 
 #comp-title {
