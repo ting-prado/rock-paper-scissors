@@ -15,8 +15,8 @@ html {
 h1 {
     display: block;
     text-align: center;
-    font-family: 'monogram';
-    font-size: 3.5rem;
+    font-family: 'monogram', cursive;
+    font-size: 3rem;
     color: rgb(255, 255, 134);
     margin-top: 0.5em;
     -webkit-text-stroke: 0.09rem #0a490a;
@@ -27,9 +27,32 @@ h1 {
 h1 {
     display: block;
     text-align: center;
-    font-family: 'monogram';
+    font-family: 'monogram', cursive;
     font-size: 3.5rem;
     color: #0c740c;
     margin-top: 20px;
 }
+}
+
+#playerChoicesDiv {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 11.8em;
+    margin-left: 8em;
+    width: 8.6em;
+    background: rgba(237, 255, 6, 0.36);
+}
+
+#playerRock {
+    height: 70px;
+}
+
+.playerChoices {
+    margin: 0.5em;
+    width: 100px;
+    height: 90px;
+    padding: 10px;
+    border: 1px solid black;
+    background: rgba(35, 84, 24, 0.64);
 }
