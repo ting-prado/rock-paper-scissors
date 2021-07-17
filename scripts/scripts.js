@@ -1,3 +1,9 @@
+let displayMessages = document.querySelector('#display-messages');
+displayMessages.textContent= 'Welcome!';
+
+let displayScore = document.querySelector('#score');
+displayScore.textContent = 'Current score: ';
+
 console.log('Welcome to rock, paper, scissors game');
 
 function computerPlay(){ //Returns Rock, Paper, Scissors randomly
