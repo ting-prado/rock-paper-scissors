@@ -89,13 +89,18 @@ h2 {
     transform: scaleX(-1);
 }
 
-.playerChoices {
+.playerChoice {
     margin: 0.5em;
     width: 100px;
     height: 90px;
     padding: 10px;
     border: 1px solid #219221;
     background: rgba(35, 84, 24, 0.64);
+}
+
+.playerChoice:hover {
+    opacity: 0.9;
+    border: 1px solid yellow;
 }
 
 #resultGif {
@@ -112,7 +117,7 @@ h2 {
     background: rgba(237, 255, 6, 0.36);
     justify-self: end;
 }
-.compChoices {
+.compChoice {
     margin: 0.5em;
     width: 100px;
     height: 90px;
@@ -149,4 +154,10 @@ h2 {
     font-size: 18px;
     font-family: 'monogram', monospace;
     color: #108a08;
+}
+
+.afterChoose {
+    opacity: 0.9;
+    border: 1px solid rgb(2, 131, 55);
+    background: skyblue;
 }

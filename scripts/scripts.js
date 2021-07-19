@@ -10,8 +10,21 @@ displayScore.textContent = `Current score: ${playerScore}-${computerScore}`;
 let resultGif = document.querySelector('#default-gif');
 resultGif.setAttribute('src', 'images/default.gif');
 
-console.log('Welcome to rock, paper, scissors game');
+const playerChoices = document.querySelectorAll('.playerChoice');
+playerChoices.forEach(playerChoice => {
+    playerChoice.addEventListener('click', clickedEffect);
+    playerChoice.addEventListener('click', logId);
+});
 
+function clickedEffect(e) {
+    this.classList.add('afterChoose');
+}
+
+function logId(e) {
+    console.log(this.id);
+}
+
+console.log('Welcome to rock, paper, scissors game');
 
 
 // function computerPlay(){ //Returns Rock, Paper, Scissors randomly
