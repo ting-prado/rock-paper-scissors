@@ -24,13 +24,17 @@ function logId(e) {
     console.log(this.id);
 }
 
+function computerPlay(){
+    const computerChoices = document.getElementsByClassName("compChoice");
+    let compChoice = computerChoices[Math.floor(Math.random()*3)];
+    compChoice.classList.add('afterChoose');
+    return compChoice.id;
+}
+
 console.log('Welcome to rock, paper, scissors game');
 
-
-// function computerPlay(){ //Returns Rock, Paper, Scissors randomly
-//     let computerChoice = ['Rock', 'Paper', 'Scissors'];
-//     return computerChoice[Math.floor(Math.random()*3)];
-// }
+const computerSelection = computerPlay();
+console.log(computerSelection);
 
 // function playerPlay() { //Asks the user which choice will he/she picks
 //     let playerChoice = prompt('Rock, paper, or scissors? ');
