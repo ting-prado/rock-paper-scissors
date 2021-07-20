@@ -7,7 +7,7 @@ displayMessages.textContent= 'Welcome!';
 let displayScore = document.querySelector('#score');
 displayScore.textContent = `Current score: ${playerScore}-${computerScore}`;
 
-let resultGif = document.querySelector('#default-gif');
+let resultGif = document.querySelector('#result-gif');
 resultGif.setAttribute('src', 'images/default.gif');
 
 const playerChoices = document.querySelectorAll('.playerChoice');
@@ -34,12 +34,71 @@ function computerPlay(){
 function selection(selected) {
     const playerSelection = selected;
     const computerSelection = computerPlay();
-    console.log(`${playerSelection}, ${computerSelection}`);
+    resultEvaluator(playerSelection, computerSelection);
 }
-// playerChoice.addEventListener('click', computerPlay);
-// const computerSelection = computerPlay();
-// console.log(computerSelection);
 
+function resultEvaluator(playerSelection, computerSelection) {
+    changeResultGif(playerSelection, computerSelection);
+    const winner = determineWinner(playerSelection, computerSelection);
+    console.log(winner);
+}
+
+function changeResultGif(playerSelection, computerSelection) {
+    if (playerSelection === 'playerRock' && computerSelection === 'compRock') { //Rock vs Rock
+        resultGif.setAttribute('src', 'images/rock-tie.gif');
+    }
+    else if  (playerSelection === 'playerPaper' && computerSelection === 'compPaper') { //Paper vs Paper
+        resultGif.setAttribute('src', 'images/paper-tie.gif');
+    }    
+    else if   (playerSelection === 'playerScissor' && computerSelection === 'compScissor') { //Scissors vs Scissors
+        resultGif.setAttribute('src', 'images/scissors-tie.gif');
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compPaper') { //Rock vs Paper
+        resultGif.setAttribute('src', 'images/rock vs paper.gif');
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compRock') { //Paper vs Rock
+        resultGif.setAttribute('src', 'images/paper vs rock.gif');
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compScissor') { //Rock vs Scissors
+        resultGif.setAttribute('src', 'images/rock vs scissor.gif');
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compRock') { //Scissors vs Rock
+        resultGif.setAttribute('src', 'images/scissor vs rock.gif');
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compScissor') { //Paper vs Scissors
+        resultGif.setAttribute('src', 'images/paper vs scissor.gif');
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compPaper') { //Scissors vs Paper
+        resultGif.setAttribute('src', 'images/scissor vs paper.gif');
+    }
+}
+
+function determineWinner(playerSelection, computerSelection) {
+    if ((playerSelection === 'playerRock' && computerSelection === 'compRock') || //Rock vs Rock || Paper vs Paper || Scissors vs Scissors
+        (playerSelection === 'playerPaper' && computerSelection === 'compPaper') ||
+        (playerSelection === 'playerScissor' && computerSelection === 'compScissor')
+    ) { 
+        return;
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compPaper') { //Rock vs Paper
+        return 'computer';
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compRock') { //Paper vs Rock
+        return 'player';
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compScissor') { //Rock vs Scissors
+        return 'player';
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compRock') { //Scissors vs Rock
+        return 'computer';
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compScissor') { //Paper vs Scissors
+        return 'computer';
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compPaper') { //Scissors vs Paper
+        return 'player';
+    }
+}
 console.log('Welcome to rock, paper, scissors game');
 
 // function playerPlay() { //Asks the user which choice will he/she picks
