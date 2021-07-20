@@ -13,15 +13,15 @@ resultGif.setAttribute('src', 'images/default.gif');
 const playerChoices = document.querySelectorAll('.playerChoice');
 playerChoices.forEach(playerChoice => {
     playerChoice.addEventListener('click', clickedEffect);
-    playerChoice.addEventListener('click', logId);
+    playerChoice.addEventListener('click', getId);
 });
 
 function clickedEffect(e) {
     this.classList.add('afterChoose');
 }
 
-function logId(e) {
-    console.log(this.id);
+function getId(e) {
+    selection(this.id);
 }
 
 function computerPlay(){
@@ -31,10 +31,16 @@ function computerPlay(){
     return compChoice.id;
 }
 
-console.log('Welcome to rock, paper, scissors game');
+function selection(selected) {
+    const playerSelection = selected;
+    const computerSelection = computerPlay();
+    console.log(`${playerSelection}, ${computerSelection}`);
+}
+// playerChoice.addEventListener('click', computerPlay);
+// const computerSelection = computerPlay();
+// console.log(computerSelection);
 
-const computerSelection = computerPlay();
-console.log(computerSelection);
+console.log('Welcome to rock, paper, scissors game');
 
 // function playerPlay() { //Asks the user which choice will he/she picks
 //     let playerChoice = prompt('Rock, paper, or scissors? ');

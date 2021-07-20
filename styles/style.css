@@ -87,6 +87,8 @@ h2 {
 
 #playerScissor {
     transform: scaleX(-1);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .playerChoice {
@@ -129,6 +131,11 @@ h2 {
 #compRock {
     height: 70px;
     transform: scaleX(-1);
+}
+
+#compScissor {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #compPaper {
