@@ -12,10 +12,32 @@ resultGif.setAttribute('src', 'images/default.gif');
 
 const playerChoices = document.querySelectorAll('.playerChoice');
 const computerChoices = document.querySelectorAll('.compChoice');
-playerChoices.forEach(playerChoice => {
-    playerChoice.addEventListener('click', clickedEffect);
-    playerChoice.addEventListener('click', getId);
-});
+
+for(let i = 0; i<playerChoices.length; i++){
+    playerChoices[i].addEventListener('click', roundCheck);
+}
+
+function roundCheck() {
+    if(playerScore+computerScore == 5){
+        playerChoices.forEach(playerChoice => {
+            playerChoice.removeEventListener('click', clickedEffect);
+            playerChoice.removeEventListener('click', getId);
+            playerChoice.classList.add('noHover');
+        });
+
+        if (playerScore > computerScore){
+            displayMessages.textContent= 'Congratulations! You won the game!';
+        }
+        else
+            displayMessages.textContent= 'You lost. Better luck next time!';
+    }
+    else{
+        playerChoices.forEach(playerChoice => {
+            playerChoice.addEventListener('click', clickedEffect);
+            playerChoice.addEventListener('click', getId);
+        });
+    }
+}
 
 function clickedEffect(e) {
     this.classList.add('afterChoose');

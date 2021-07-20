@@ -105,6 +105,10 @@ h2 {
     border: 1px solid yellow;
 }
 
+.noHover {
+    pointer-events: none;
+}
+
 #resultGif {
     display: inline;
     justify-self: center;
