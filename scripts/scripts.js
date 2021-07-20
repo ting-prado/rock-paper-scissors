@@ -2,15 +2,16 @@ let playerScore = 0,
     computerScore = 0;
 
 let displayMessages = document.querySelector('#display-messages');
-displayMessages.textContent= 'Welcome!';
+displayMessages.textContent= 'Welcome! Rock, paper, or scissors?';
 
-let displayScore = document.querySelector('#score');
-displayScore.textContent = `Current score: ${playerScore}-${computerScore}`;
+let scoreDisplay = document.querySelector('#score');
+scoreDisplay.textContent = `Current score: ${playerScore}-${computerScore}`;
 
 let resultGif = document.querySelector('#result-gif');
 resultGif.setAttribute('src', 'images/default.gif');
 
 const playerChoices = document.querySelectorAll('.playerChoice');
+const computerChoices = document.querySelectorAll('.compChoice');
 playerChoices.forEach(playerChoice => {
     playerChoice.addEventListener('click', clickedEffect);
     playerChoice.addEventListener('click', getId);
@@ -25,7 +26,6 @@ function getId(e) {
 }
 
 function computerPlay(){
-    const computerChoices = document.getElementsByClassName("compChoice");
     let compChoice = computerChoices[Math.floor(Math.random()*3)];
     compChoice.classList.add('afterChoose');
     return compChoice.id;
@@ -41,9 +41,32 @@ function resultEvaluator(playerSelection, computerSelection) {
     const winner = determineWinner(playerSelection, computerSelection);
     changeResultGif(playerSelection, computerSelection);
     const duration = getDuration(playerSelection, computerSelection);
-    window.setTimeout(returnDefaultGif, duration);
+    setTimeout(returnDefaultGif, duration);
     displayMessage(winner, playerSelection, computerSelection);
-    console.log(winner);
+    addScore(winner);
+    setTimeout(removeEffects, duration);
+    setTimeout(displayScore, duration);
+}
+
+function removeEffects(){
+    const choosen = document.querySelectorAll('.afterChoose');
+    choosen.forEach(choice => {
+        choice.classList.remove('afterChoose');
+    });
+}
+
+function displayScore() {
+    scoreDisplay.textContent = `Current score: ${playerScore}-${computerScore}`;
+}
+
+function addScore(winner) {
+    if (winner == 'player') {
+        ++playerScore;
+    }
+    else if (winner == 'computer') {
+        ++computerScore;
+    }
+    else return;
 }
 
 function displayMessage(winner, playerSelection, computerSelection) {
@@ -233,5 +256,4 @@ console.log('Welcome to rock, paper, scissors game');
 // }
 // else if (playerScore < computerScore) { //Displays consolatory message if player lost
 //     console.log(`You lost. Better luck next time!\nFinal score: ${playerScore} - ${computerScore}`);
-// }
 // }
