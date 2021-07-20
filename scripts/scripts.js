@@ -38,11 +38,26 @@ function selection(selected) {
 }
 
 function resultEvaluator(playerSelection, computerSelection) {
+    const winner = determineWinner(playerSelection, computerSelection);
     changeResultGif(playerSelection, computerSelection);
     const duration = getDuration(playerSelection, computerSelection);
     window.setTimeout(returnDefaultGif, duration);
-    const winner = determineWinner(playerSelection, computerSelection);
+    displayMessage(winner, playerSelection, computerSelection);
     console.log(winner);
+}
+
+function displayMessage(winner, playerSelection, computerSelection) {
+    const playerChoice = playerSelection.slice(6, playerSelection.length); 
+    const compChoice = computerSelection.slice(4, computerSelection.length); 
+    if (winner == 'player') {
+        displayMessages.textContent = `You win! ${playerChoice} beats ${compChoice}.`;
+    }
+    else if (winner == 'computer') {
+        displayMessages.textContent = `You lose. ${compChoice} beats ${playerChoice}.`;
+    }
+    else {
+        displayMessages.textContent = "It's a tie!";
+    }
 }
 
 function getDuration(playerSelection, computerSelection) {
