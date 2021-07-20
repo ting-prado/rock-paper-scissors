@@ -39,8 +39,42 @@ function selection(selected) {
 
 function resultEvaluator(playerSelection, computerSelection) {
     changeResultGif(playerSelection, computerSelection);
+    const duration = getDuration(playerSelection, computerSelection);
+    window.setTimeout(returnDefaultGif, duration);
     const winner = determineWinner(playerSelection, computerSelection);
     console.log(winner);
+}
+
+function getDuration(playerSelection, computerSelection) {
+    if ((playerSelection === 'playerRock' && computerSelection === 'compRock') || //Rock vs Rock
+        (playerSelection === 'playerPaper' && computerSelection === 'compPaper')) { //Paper vs Paper
+        return 1273;
+    }  
+    else if  (playerSelection === 'playerScissor' && computerSelection === 'compScissor') { //Scissors vs Scissors
+        return 1274;
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compPaper') { //Rock vs Paper
+        return 2304;
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compRock') { //Paper vs Rock
+        return 2323;
+    }
+    else if (playerSelection === 'playerRock' && computerSelection === 'compScissor') { //Rock vs Scissors
+        return 2470;
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compRock') { //Scissors vs Rock
+        return 2404;
+    }
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compScissor') { //Paper vs Scissors
+        return 2680;
+    }
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compPaper') { //Scissors vs Paper
+        return 2748;
+    }
+}
+
+function returnDefaultGif() {
+    resultGif.setAttribute('src', 'images/default.gif');
 }
 
 function changeResultGif(playerSelection, computerSelection) {
