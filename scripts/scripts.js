@@ -34,8 +34,8 @@ document.getElementById("comp-title").style.visibility = 'hidden';
 startBtn.addEventListener('click', showUI);
 
 playerChoices.forEach(playerChoice => {
-    playerChoice.addEventListener('click', clickedEffect);
-    playerChoice.addEventListener('click', getId);
+    playerChoice.addEventListener('click', clickedEffect, { once: true });
+    playerChoice.addEventListener('click', getId, { once: true });
 });
 
 function showUI(){
@@ -72,6 +72,7 @@ function computerPlay(){
 function selection(selected) {
     const playerSelection = selected;
     const computerSelection = computerPlay();
+    removeHover();
     gameEvaluator(playerSelection, computerSelection);
 }
 
@@ -90,14 +91,26 @@ function gameEvaluator(playerSelection, computerSelection) {
 
 function checkScore(duration) {
     if (playerScore + computerScore == 5) {
-        playerChoices.forEach(playerChoice => {
-            playerChoice.removeEventListener('click', clickedEffect);
-            playerChoice.removeEventListener('click', getId);
-            playerChoice.classList.add('noHover');
-        });
-    setTimeout(displayFinal, duration);
-    setTimeout(hideElements, duration);
+        setTimeout(displayFinal, duration);
+        setTimeout(hideElements, duration);
     }
+    else {
+        setTimeout(returnClick, duration);
+    }
+}
+
+function removeHover(){
+    playerChoices.forEach(playerChoice => {
+        playerChoice.classList.add('noHover');
+    });
+}
+
+function returnClick() {
+    playerChoices.forEach(playerChoice => {
+        playerChoice.addEventListener('click', clickedEffect, { once: true });
+        playerChoice.addEventListener('click', getId, { once: true });
+        playerChoice.classList.remove('noHover');
+    });
 }
 
 function returnDefaultMessage(){
