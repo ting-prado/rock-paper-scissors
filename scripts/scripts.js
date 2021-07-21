@@ -217,10 +217,10 @@ function changeResultGif(playerSelection, computerSelection) {
     if (playerSelection === 'playerRock' && computerSelection === 'compRock') { //Rock vs Rock
         resultGif.setAttribute('src', 'images/rock-tie.gif');
     }
-    else if  (playerSelection === 'playerPaper' && computerSelection === 'compPaper') { //Paper vs Paper
+    else if (playerSelection === 'playerPaper' && computerSelection === 'compPaper') { //Paper vs Paper
         resultGif.setAttribute('src', 'images/paper-tie.gif');
     }    
-    else if   (playerSelection === 'playerScissor' && computerSelection === 'compScissor') { //Scissors vs Scissors
+    else if (playerSelection === 'playerScissor' && computerSelection === 'compScissor') { //Scissors vs Scissors
         resultGif.setAttribute('src', 'images/scissors-tie.gif');
     }
     else if (playerSelection === 'playerRock' && computerSelection === 'compPaper') { //Rock vs Paper
