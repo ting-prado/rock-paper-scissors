@@ -1,6 +1,9 @@
 let playerScore = 0,
     computerScore = 0;
 
+const startBtn = document.querySelector('#start-btn');
+const restartBtn = document.querySelector('#restart-btn');
+
 let displayMessages = document.querySelector('#display-messages');
 displayMessages.textContent= 'Rock, Paper, or Scissors?';
 
@@ -12,10 +15,45 @@ resultGif.setAttribute('src', 'images/default.gif');
 
 const playerChoices = document.querySelectorAll('.playerChoice');
 const computerChoices = document.querySelectorAll('.compChoice');
+
+restartBtn.style.visibility = 'hidden';
+displayMessages.style.visibility = 'hidden';
+scoreDisplay.style.visibility = 'hidden';
+resultGif.style.visibility = 'hidden';
+playerChoices.forEach(playerChoice => {
+    playerChoice.style.visibility = 'hidden';
+});
+computerChoices.forEach(computerChoice => {
+    computerChoice.style.visibility = 'hidden';
+});
+document.getElementById("playerChoices").style.visibility = 'hidden';
+document.getElementById("compChoices").style.visibility = 'hidden';
+document.getElementById("player-title").style.visibility = 'hidden';
+document.getElementById("comp-title").style.visibility = 'hidden';
+
+startBtn.addEventListener('click', showUI);
+
 playerChoices.forEach(playerChoice => {
     playerChoice.addEventListener('click', clickedEffect);
     playerChoice.addEventListener('click', getId);
 });
+
+function showUI(){
+    startBtn.style.visibility = 'hidden';
+    displayMessages.style.visibility = 'visible';
+    scoreDisplay.style.visibility = 'visible';
+    resultGif.style.visibility = 'visible';
+    playerChoices.forEach(playerChoice => {
+        playerChoice.style.visibility = 'visible';
+    });
+    computerChoices.forEach(computerChoice => {
+        computerChoice.style.visibility = 'visible';
+    });
+    document.getElementById("playerChoices").style.visibility = 'visible';
+    document.getElementById("compChoices").style.visibility = 'visible';
+    document.getElementById("player-title").style.visibility = 'visible';
+    document.getElementById("comp-title").style.visibility = 'visible';
+}
 
 function clickedEffect(e) {
     this.classList.add('afterChoose');
@@ -34,10 +72,10 @@ function computerPlay(){
 function selection(selected) {
     const playerSelection = selected;
     const computerSelection = computerPlay();
-    resultEvaluator(playerSelection, computerSelection);
+    gameEvaluator(playerSelection, computerSelection);
 }
 
-function resultEvaluator(playerSelection, computerSelection) {
+function gameEvaluator(playerSelection, computerSelection) {
     const winner = determineWinner(playerSelection, computerSelection);
     changeResultGif(playerSelection, computerSelection);
     const duration = getDuration(playerSelection, computerSelection);
@@ -73,6 +111,7 @@ function hideElements() {
     computerChoices.forEach(computerChoice => {
         computerChoice.style.visibility = 'hidden';
     });
+    restartBtn.style.visibility = 'visible';
     document.getElementById("playerChoices").style.visibility = 'hidden';
     document.getElementById("compChoices").style.visibility = 'hidden';
     document.getElementById("player-title").style.visibility = 'hidden';
@@ -82,15 +121,30 @@ function hideElements() {
 function displayFinal(){
     if (playerScore > computerScore){
         displayMessages.textContent= 'Congratulations! You won the game!';
-        resultGif.setAttribute('src', 'images/celebrate.gif');
+        resultGif.setAttribute('src', 'images/celebration.gif');
     }
     else{ 
         displayMessages.textContent= 'You lost. Better luck next time!';
         resultGif.setAttribute('src', 'images/sad.gif');
     }
     scoreDisplay.textContent = `Final score: ${playerScore}-${computerScore}`;
+    restartBtn.addEventListener('click', restartGame);
 }
 
+function restartGame(){
+    playerScore = 0;
+    computerScore = 0;
+    showUI();
+    returnDefaultMessage();
+    returnDefaultGif();
+    displayScore();
+    restartBtn.style.visibility = 'hidden';
+    playerChoices.forEach(playerChoice => {
+        playerChoice.addEventListener('click', clickedEffect);
+        playerChoice.addEventListener('click', getId);
+        playerChoice.classList.remove('noHover');
+    });
+}
 
 function removeEffects(){
     const choosen = document.querySelectorAll('.afterChoose');

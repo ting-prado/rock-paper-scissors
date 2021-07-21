@@ -172,3 +172,33 @@ h2 {
     border: 1px solid rgb(2, 131, 55);
     background: skyblue;
 }
+
+button {
+    display: block;
+    position: absolute;
+    height: 3rem;
+    width: 10rem;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+    background: rgb(191, 245, 85);
+    color: green;
+    border: 1px solid rgb(191, 245, 85);
+    box-shadow: 3px 3px #066306;
+}
+
+button:hover {
+    opacity: 0.9;
+    border: 1px solid yellowgreen;
+}
+
+#start-btn {
+    top: 23%;
+    right: 45%;
+}
+
+#restart-btn{
+    bottom: 7%;
+    right: 43%;
+}
