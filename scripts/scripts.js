@@ -1,6 +1,7 @@
 let playerScore = 0,
     computerScore = 0;
 
+
 let displayMessages = document.querySelector('#display-messages');
 displayMessages.textContent= 'Welcome! Rock, paper, or scissors?';
 
@@ -12,32 +13,10 @@ resultGif.setAttribute('src', 'images/default.gif');
 
 const playerChoices = document.querySelectorAll('.playerChoice');
 const computerChoices = document.querySelectorAll('.compChoice');
-
-for(let i = 0; i<playerChoices.length; i++){
-    playerChoices[i].addEventListener('click', roundCheck);
-}
-
-function roundCheck() {
-    if(playerScore+computerScore == 5){
-        playerChoices.forEach(playerChoice => {
-            playerChoice.removeEventListener('click', clickedEffect);
-            playerChoice.removeEventListener('click', getId);
-            playerChoice.classList.add('noHover');
-        });
-
-        if (playerScore > computerScore){
-            displayMessages.textContent= 'Congratulations! You won the game!';
-        }
-        else
-            displayMessages.textContent= 'You lost. Better luck next time!';
-    }
-    else{
-        playerChoices.forEach(playerChoice => {
-            playerChoice.addEventListener('click', clickedEffect);
-            playerChoice.addEventListener('click', getId);
-        });
-    }
-}
+playerChoices.forEach(playerChoice => {
+    playerChoice.addEventListener('click', clickedEffect);
+    playerChoice.addEventListener('click', getId);
+});
 
 function clickedEffect(e) {
     this.classList.add('afterChoose');
@@ -68,7 +47,32 @@ function resultEvaluator(playerSelection, computerSelection) {
     addScore(winner);
     setTimeout(removeEffects, duration);
     setTimeout(displayScore, duration);
+    checkScore(duration);
 }
+
+function checkScore(duration) {
+    if (playerScore + computerScore == 5) {
+        playerChoices.forEach(playerChoice => {
+            playerChoice.removeEventListener('click', clickedEffect);
+            playerChoice.removeEventListener('click', getId);
+            playerChoice.classList.add('noHover');
+        });
+    setTimeout(displayFinal, duration);
+    }
+}
+
+function displayFinal(){
+    if (playerScore > computerScore){
+        displayMessages.textContent= 'Congratulations! You won the game!';
+        resultGif.setAttribute('src', 'images/celebrate.gif');
+    }
+    else{ 
+        displayMessages.textContent= 'You lost. Better luck next time!';
+        resultGif.setAttribute('src', 'images/sad.gif');
+    }
+    scoreDisplay.textContent = `Final score: ${playerScore}-${computerScore}`;
+}
+
 
 function removeEffects(){
     const choosen = document.querySelectorAll('.afterChoose');
