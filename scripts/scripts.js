@@ -90,7 +90,7 @@ function gameEvaluator(playerSelection, computerSelection) {
 }
 
 function checkScore(duration) {
-    if (playerScore + computerScore == 5) {
+    if ((playerScore == 5) || (computerScore == 5)) {
         setTimeout(displayFinal, duration);
         setTimeout(hideElements, duration);
     }
