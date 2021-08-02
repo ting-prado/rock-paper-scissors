@@ -56,6 +56,7 @@ function showUI(){
 }
 
 function clickedEffect(e) {
+    video.poster="images/poster.png"
     this.classList.add('afterChoose');
 }
 
