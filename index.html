@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="images/icon.png">
-    <link rel="stylsheet" type="text/css" href="styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <title>Rock, Paper, Scissors</title>
 </head>
@@ -25,8 +25,10 @@
             <img id="playerScissor" class="playerChoice" src="images/scissor.jpg" alt="player scissor">
             <img id="playerRock" class="playerChoice" src="images/rock.png" alt="player rock">
         </div>
-        <div id="resultGif">
-            <img id="result-gif" alt="fists face off gif">
+        <div id="resultVid">
+            <video preload="auto" autoplay loop playsinline poster="images/poster.png">
+                <source type="video/webm">
+            </video>
         </div>
         <div id="compChoices" class="choicesDiv">
             <img id="compPaper" class="compChoice" src="images/paper.png" alt="comp paper">

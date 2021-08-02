@@ -10,8 +10,8 @@ displayMessages.textContent= 'Rock, Paper, or Scissors?';
 let scoreDisplay = document.querySelector('#score');
 scoreDisplay.textContent = `Current score: ${playerScore}-${computerScore}`;
 
-let resultGif = document.querySelector('#result-gif');
-resultGif.setAttribute('src', 'images/default.gif');
+const video = document.querySelector('video');
+video.src = "images/default.webm";
 
 const playerChoices = document.querySelectorAll('.playerChoice');
 const computerChoices = document.querySelectorAll('.compChoice');
@@ -19,7 +19,7 @@ const computerChoices = document.querySelectorAll('.compChoice');
 restartBtn.style.visibility = 'hidden';
 displayMessages.style.visibility = 'hidden';
 scoreDisplay.style.visibility = 'hidden';
-resultGif.style.visibility = 'hidden';
+video.style.visibility = 'hidden';
 playerChoices.forEach(playerChoice => {
     playerChoice.style.visibility = 'hidden';
 });
@@ -42,7 +42,7 @@ function showUI(){
     startBtn.style.visibility = 'hidden';
     displayMessages.style.visibility = 'visible';
     scoreDisplay.style.visibility = 'visible';
-    resultGif.style.visibility = 'visible';
+    video.style.visibility = 'visible';
     playerChoices.forEach(playerChoice => {
         playerChoice.style.visibility = 'visible';
     });
@@ -78,9 +78,9 @@ function selection(selected) {
 
 function gameEvaluator(playerSelection, computerSelection) {
     const winner = determineWinner(playerSelection, computerSelection);
-    changeResultGif(playerSelection, computerSelection);
+    changeResultVid(playerSelection, computerSelection);
     const duration = getDuration(playerSelection, computerSelection);
-    setTimeout(returnDefaultGif, duration);
+    setTimeout(returnDefaultVid, duration);
     displayMessage(winner, playerSelection, computerSelection);
     addScore(winner);
     setTimeout(removeEffects, duration);
@@ -134,11 +134,13 @@ function hideElements() {
 function displayFinal(){
     if (playerScore > computerScore){
         displayMessages.textContent= 'Congratulations! You won the game!';
-        resultGif.setAttribute('src', 'images/celebration.gif');
+        video.src = "images/celebration.webm"
+        video.classList.add('endVids');
     }
     else{ 
         displayMessages.textContent= 'You lost. Better luck next time!';
-        resultGif.setAttribute('src', 'images/sad.gif');
+        video.src = "images/sad.webm"
+        video.classList.add('endVids');
     }
     scoreDisplay.textContent = `Final score: ${playerScore}-${computerScore}`;
     restartBtn.addEventListener('click', restartGame);
@@ -147,9 +149,10 @@ function displayFinal(){
 function restartGame(){
     playerScore = 0;
     computerScore = 0;
+    video.classList.remove('endVids');
     showUI();
     returnDefaultMessage();
-    returnDefaultGif();
+    returnDefaultVid();
     displayScore();
     restartBtn.style.visibility = 'hidden';
     playerChoices.forEach(playerChoice => {
@@ -222,37 +225,37 @@ function getDuration(playerSelection, computerSelection) {
     }
 }
 
-function returnDefaultGif() {
-    resultGif.setAttribute('src', 'images/default.gif');
+function returnDefaultVid() {
+    video.src = "images/default.webm";
 }
 
-function changeResultGif(playerSelection, computerSelection) {
+function changeResultVid(playerSelection, computerSelection) {
     if (playerSelection === 'playerRock' && computerSelection === 'compRock') { //Rock vs Rock
-        resultGif.setAttribute('src', 'images/rock-tie.gif');
+        video.src = "images/rock-tie.webm";
     }
     else if (playerSelection === 'playerPaper' && computerSelection === 'compPaper') { //Paper vs Paper
-        resultGif.setAttribute('src', 'images/paper-tie.gif');
+        video.src = "images/paper-tie.webm";
     }    
     else if (playerSelection === 'playerScissor' && computerSelection === 'compScissor') { //Scissors vs Scissors
-        resultGif.setAttribute('src', 'images/scissors-tie.gif');
+        video.src = "images/scissor-tie.webm";
     }
     else if (playerSelection === 'playerRock' && computerSelection === 'compPaper') { //Rock vs Paper
-        resultGif.setAttribute('src', 'images/rock vs paper.gif');
+        video.src = "images/rock vs paper.webm";
     }
     else if (playerSelection === 'playerPaper' && computerSelection === 'compRock') { //Paper vs Rock
-        resultGif.setAttribute('src', 'images/paper vs rock.gif');
+        video.src = "images/paper vs rock.webm";
     }
     else if (playerSelection === 'playerRock' && computerSelection === 'compScissor') { //Rock vs Scissors
-        resultGif.setAttribute('src', 'images/rock vs scissor.gif');
+        video.src = "images/rock vs scissor.webm";
     }
     else if (playerSelection === 'playerScissor' && computerSelection === 'compRock') { //Scissors vs Rock
-        resultGif.setAttribute('src', 'images/scissor vs rock.gif');
+        video.src = "images/scissor vs rock.webm";
     }
     else if (playerSelection === 'playerPaper' && computerSelection === 'compScissor') { //Paper vs Scissors
-        resultGif.setAttribute('src', 'images/paper vs scissor.gif');
+        video.src = "images/paper vs scissor.webm";
     }
     else if (playerSelection === 'playerScissor' && computerSelection === 'compPaper') { //Scissors vs Paper
-        resultGif.setAttribute('src', 'images/scissor vs paper.gif');
+        video.src = "images/scissor vs paper.webm";
     }
 }
 
