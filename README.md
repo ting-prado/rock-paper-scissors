@@ -24,6 +24,6 @@ Rules:
 * Function Scope
 * Function Callbacks
 
-## Conclusion:
+## Thoughts After Completion:
 
 This project deepened my understanding in javascript functions and scope. There were times that I had to stop because I was confused or don't know what to do, but that was good. Because of those confusions, I was able to learn more about the concepts of functions, nodelists, selectors, and event listeners. My knowledge in HTML and CSS also improved, specially in positioning and styling. Overall, this project has been a good experience and made me look forward for more challenges in the future.
