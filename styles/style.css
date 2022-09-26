@@ -1,19 +1,24 @@
 @font-face {
-    font-family: monogram;
-    src: url('EightBitDragon-anqx.ttf');
+  font-family: monogram;
+  src: url('EightBitDragon-anqx.ttf');
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
-    background: url('../images/green-bg.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 100vh;
+  background: url('../images/green-bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-@supports (-webkit-text-stroke: 0.09rem #0a490a) { 
-h1 {
+@supports (-webkit-text-stroke: 0.09rem #0a490a) {
+  h1 {
     display: block;
     text-align: center;
     font-family: 'monogram', monospace;
@@ -23,9 +28,9 @@ h1 {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     -webkit-text-stroke: 0.09rem #0a490a;
-    }
+  }
 
-h2 {
+  h2 {
     font-family: 'monogram', monospace;
     color: white;
     font-size: 2em;
@@ -33,11 +38,11 @@ h2 {
     -webkit-text-stroke: 0.09rem #0a490a;
     margin-top: 0;
     margin-bottom: 0.2em;
-}
+  }
 }
 
-@supports not (-webkit-text-stroke: 0.09rem #0a490a){
-h1 {
+@supports not (-webkit-text-stroke: 0.09rem #0a490a) {
+  h1 {
     display: block;
     text-align: center;
     font-family: 'monogram', monospace;
@@ -45,168 +50,171 @@ h1 {
     color: #0c740c;
     margin-top: 20px;
     margin-bottom: 0.5em;
-}
+    font-weight: bold;
+  }
 
-h2 {
+  h2 {
     font-family: 'monogram', monospace;
     color: rgb(119, 107, 0);
     font-size: 2em;
     margin-top: 0;
     margin-bottom: 0.2em;
-}
-}
-
-#titles {
-    display: flex;
-    justify-content: space-around;
-}
-
-#player-title {
-    margin-left: -4.8em;
-}
-
-#comp-title {
-    margin-right: -5.8em;
+  }
 }
 
 #content {
-    display: grid;
-    grid-template-columns: 8em 10em 1fr 10em 8em; 
-    grid-gap: 2em;
+  margin-top: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 3rem;
+  display: grid;
+  grid-column-gap: 2rem;
+  justify-items: center;
+  align-items: center;
 }
 
 #playerChoices {
-    border: 1px solid #226b11;
-    display: flex;
-    flex-direction: column;
-    width: 8.6em;
-    background: rgba(237, 255, 6, 0.36);
-}
-
-#playerRock {
-    height: 70px;
-}
-
-#playerScissor {
-    transform: scaleX(-1);
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.playerChoice {
-    margin: 0.5em;
-    width: 100px;
-    height: 90px;
-    padding: 10px;
-    border: 1px solid #219221;
-    background: rgba(35, 84, 24, 0.64);
-}
-
-.playerChoice:hover {
-    opacity: 0.9;
-    border: 1px solid yellow;
-}
-
-.noHover {
-    pointer-events: none;
+  grid-area: 2 / 1 / 3 / 2;
 }
 
 #resultVid {
-    position: relative;
-    display: inline;
-    justify-self: center;
-    align-self: center;
-}
-
-.endVids {
-    position: relative;
-    bottom: 2.5em;
+  grid-area: 2 / 2 / 3 / 3;
 }
 
 #compChoices {
-    border: 1px solid #226b11;
-    display: flex;
-    flex-direction: column;
-    width: 8.6em;
-    background: rgba(237, 255, 6, 0.36);
-    justify-self: end;
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+#comp-title {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+#playerChoices,
+#compChoices {
+  display: flex;
+  height: 100%;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border: 1px solid #226b11;
+  background: rgba(237, 255, 6, 0.36);
+  padding: 0 1rem;
+}
+
+.playerChoice,
+.compChoice {
+  transform: scale(1.2);
+  margin: 1rem;
+}
+
+#playerRock {
+  height: 70px;
+}
+
+#playerScissor {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.playerChoice {
+  margin: 0.5em;
+  width: 100px;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid #219221;
+  background: rgba(35, 84, 24, 0.64);
+  cursor: pointer;
+}
+
+.playerChoice:hover {
+  opacity: 0.9;
+  transform: scale(1.3);
+  border: 1px solid yellow;
+}
+
+.noHover {
+  pointer-events: none;
+}
+
+.endVids {
+  position: relative;
+  bottom: 2.5em;
 }
 .compChoice {
-    margin: 0.5em;
-    width: 100px;
-    height: 90px;
-    padding: 10px;
-    border: 1px solid #219221;
-    background: rgba(35, 84, 24, 0.64);
+  margin: 0.5em;
+  width: 100px;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid #219221;
+  background: rgba(35, 84, 24, 0.64);
 }
 
 #compRock {
-    height: 70px;
-    transform: scaleX(-1);
+  height: 70px;
 }
 
 #compScissor {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-#compPaper {
-    transform: scaleX(-1);
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #display-messages {
-    display: block;
-    height: auto;
-    color:#108a08;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    margin: 0.5em auto;
-    width: 35em;
-    font-size: 22px;
-    text-align: center;
-    font-family: 'monogram', monospace;
+  display: block;
+  height: auto;
+  color: #108a08;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 0.5em auto;
+  width: 35em;
+  font-size: 22px;
+  text-align: center;
+  font-family: 'monogram', monospace;
 }
 
 #score {
-    text-align: center;
-    margin: 0;
-    font-size: 18px;
-    font-family: 'monogram', monospace;
-    color: #108a08;
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+  font-family: 'monogram', monospace;
+  color: #108a08;
 }
 
 .afterChoose {
-    opacity: 0.9;
-    border: 1px solid darkcyan;
-    background: skyblue;
+  opacity: 0.9;
+  border: 1px solid darkcyan;
+  background: skyblue;
+  transform: scale(1.3);
 }
 
 button {
-    display: block;
-    position: absolute;
-    height: 3rem;
-    width: 10rem;
-    font-family: monospace;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 0;
-    background: rgb(191, 245, 85);
-    color: green;
-    border: 1px solid rgb(191, 245, 85);
-    box-shadow: 3px 3px #066306;
+  display: block;
+  position: absolute;
+  height: 3rem;
+  width: 10rem;
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0;
+  background: rgb(191, 245, 85);
+  color: green;
+  border: 1px solid rgb(191, 245, 85);
+  box-shadow: 3px 3px #066306;
 }
 
 button:hover {
-    opacity: 0.9;
-    border: 1px solid yellowgreen;
+  opacity: 0.9;
+  border: 1px solid yellowgreen;
 }
 
 #start-btn {
-    top: 23%;
-    right: 45%;
+  top: 23%;
+  right: 45%;
 }
 
-#restart-btn{
-    bottom: 7%;
-    right: 43%;
+#restart-btn {
+  bottom: 7%;
+  right: 43%;
+}
+
+#start-btn,
+#restart-btn {
+  cursor: pointer;
 }

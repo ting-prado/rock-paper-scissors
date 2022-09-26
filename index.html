@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="images/icon.png">
-    <link rel="stylesheet" type="text/css" href="styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="images/icon.png" />
+    <link rel="stylesheet" type="text/css" href="styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Rock, Paper, Scissors</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Rock-Paper-Scissors Game</h1>
-        <div><button id="start-btn">Start Game</button></div>
+      <h1>Rock-Paper-Scissors Game</h1>
+      <div><button id="start-btn">Start Game</button></div>
     </header>
     <div id="display-messages"></div>
     <p id="score"></p>
-    <div id="titles">
-        <h2 id="player-title">Player</h2>
-        <h2 id="comp-title">Computer</h2>
-    </div>
     <div id="content">
-        <div></div>
-        <div id="playerChoices" class="choicesDiv">
-            <img id="playerPaper" class="playerChoice" src="images/paper.png" alt="player paper">
-            <img id="playerScissor" class="playerChoice" src="images/scissor.jpg" alt="player scissor">
-            <img id="playerRock" class="playerChoice" src="images/rock.png" alt="player rock">
-        </div>
-        <div id="resultVid">
-            <video autoplay loop playsinline>
-                <source type="video/webm">
-            </video>
-        </div>
-        <div id="compChoices" class="choicesDiv">
-            <img id="compPaper" class="compChoice" src="images/paper.png" alt="comp paper">
-            <img id="compScissor" class="compChoice" src="images/scissor.jpg" alt="comp scissor">
-            <img id="compRock" class="compChoice" src="images/rock.png" alt="comp rock">
-        </div>
-        <div></div>
+      <h2 id="player-title">Player</h2>
+      <h2 id="comp-title">Computer</h2>
+      <div id="playerChoices" class="choicesDiv">
+        <img
+          id="playerPaper"
+          class="playerChoice"
+          src="images/paper.png"
+          alt="player paper"
+        />
+        <img
+          id="playerScissor"
+          class="playerChoice"
+          src="images/scissor.jpg"
+          alt="player scissor"
+        />
+        <img
+          id="playerRock"
+          class="playerChoice"
+          src="images/rock.png"
+          alt="player rock"
+        />
+      </div>
+      <div id="resultVid">
+        <video autoplay loop playsinline>
+          <source type="video/webm" />
+        </video>
+      </div>
+      <div id="compChoices" class="choicesDiv">
+        <img
+          id="compPaper"
+          class="compChoice"
+          src="images/paper.png"
+          alt="comp paper"
+        />
+        <img
+          id="compScissor"
+          class="compChoice"
+          src="images/scissor.jpg"
+          alt="comp scissor"
+        />
+        <img
+          id="compRock"
+          class="compChoice"
+          src="images/rock.png"
+          alt="comp rock"
+        />
+      </div>
     </div>
     <button id="restart-btn">Restart Game?</button>
     <script type="text/javascript" src="scripts/scripts.js"></script>
-</body>
+  </body>
 </html>
